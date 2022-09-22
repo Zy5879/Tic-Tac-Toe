@@ -1,0 +1,15 @@
+#boardgame {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: repeat(3, 100px);
+    grid-auto-rows: 100px;
+}
+
+#boardgame > button {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.grid-item { 
+    cursor: pointer;
+}
