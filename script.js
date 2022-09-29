@@ -1,5 +1,6 @@
 const btns = document.querySelectorAll('.grid-item');
 const wins = document.querySelector('.wins')
+const turn = document.getElementById('turn')
 const winningSolutions = [
     [0,1,2],
     [3,4,5],
@@ -21,22 +22,27 @@ const gameBoard = (function() {
     }
 })();
 
-// const playerFactories = (assignedvariable) => {
-// }
+const playerFactories = (name, marker) => {
+    return {name, marker};
+}
 
 const displayController = (function() {
-    let count = 1
+    let counter = 1
+    const playerOne = playerFactories('Player 1', 'X')
+    const playerTwo = playerFactories('Player 2', 'O')
         // const btns = document.querySelectorAll('.grid-item');
         btns.forEach(btn => {
             btn.addEventListener('click', function() {
                 btn.disabled = true;
                 btn.style.color = 'black';
-                if(count == 1) {
-                    btn.innerHTML = 'X'
-                    count = 0;
+                if(counter == 1) {
+                    btn.innerHTML = playerOne.marker
+                    counter = 0;
+                    turn.innerHTML = "Player 2's turn!"
                 } else {
-                    btn.innerHTML = 'O';
-                    count = 1;
+                    btn.innerHTML = playerTwo.marker;
+                    counter = 1;
+                    turn.innerHTML = "Player 1's turn!"
                 }
                 gameBoard.gameArray.push(btn.innerHTML);
                 checkWinner()
@@ -50,14 +56,17 @@ const displayController = (function() {
         // let win = true;
         // if(win) {
             for(let solution of winningSolutions) {
-                if(solution.every(i => btns[i].innerHTML == 'X')) {
-                    wins.innerHTML = 'X WON';
+                if(solution.every(i => btns[i].innerHTML == playerOne.marker)) {
+                    wins.innerHTML = `${playerOne.name} Won`;
+                    turn.innerHTML = ''
                     
                 //     // win = false;
-                } else if(solution.every(i => btns[i].innerHTML == 'O')) {
-                    wins.innerHTML = 'O WON'
+                } else if(solution.every(i => btns[i].innerHTML == playerTwo.marker)) {
+                    wins.innerHTML = `${playerTwo.name} Won`
+                    turn.innerHTML = ''
                 } else if(solution.every(i => btns[i].innerHTML && gameBoard.gameArray.length == 9)) {
                     wins.innerHTML = 'TIE'
+                    turn.innerHTML = ''
                 }
 
 
