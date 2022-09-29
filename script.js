@@ -30,6 +30,13 @@ const displayController = (function() {
     let counter = 1
     const playerOne = playerFactories('Player 1', 'X')
     const playerTwo = playerFactories('Player 2', 'O')
+    const grid = document.querySelector('.game-grid')
+    const start = document.getElementById('start')
+    start.addEventListener('click', startGame)
+        function startGame() {
+            grid.style.display = 'block';
+            start.style.display = 'none';
+        }
         // const btns = document.querySelectorAll('.grid-item');
         btns.forEach(btn => {
             btn.addEventListener('click', function() {
