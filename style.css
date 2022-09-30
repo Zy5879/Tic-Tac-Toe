@@ -1,8 +1,13 @@
+body {
+   margin: 0 auto;
+   height: 100vh;
+}
+
 #boardgame {
     display: grid;
-    gap: 1px;
-    grid-template-columns: repeat(3, 100px);
-    grid-auto-rows: 100px;
+    gap: 5px;
+    grid-template-columns: repeat(3, 180px);
+    grid-auto-rows: 180px;
 }
 
 #boardgame > button {
@@ -10,6 +15,65 @@
     border: 1px solid black;
 }
 
+.grid-item {
+    background-color: white;
+    font-size: 25px;
+}
+
 .grid-item { 
     cursor: pointer;
+}
+
+#header {
+    text-align: center;
+    font-family: 'Noto Sans Mono', monospace;
+    font-size: 1.5rem;
+}
+
+.game-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.win p {
+    font-weight: 600;
+    color: black;
+    z-index: 1;
+}
+
+.winner {
+    position: fixed;
+    left: 50%;
+    top: 15%;
+    transform: translate(-50%, 0);
+    font-size: 1.5rem;
+}
+
+.text {
+    position: fixed;
+    left: 50%;
+    top: 23%;
+    transform: translate(-50%, 0);
+    margin: 0;
+    font-size: 2rem;
+}
+
+.hide {
+    display: none;
+}
+
+#turn {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+#reset {
+    margin-top: 1rem;
+
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
 }
