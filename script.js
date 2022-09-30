@@ -1,35 +1,6 @@
-// const btns = document.querySelectorAll('.grid-item');
-// const wins = document.querySelector('.wins')
-// const turn = document.getElementById('turn')
-// const winningSolutions = [
-//     [0,1,2],
-//     [3,4,5],
-//     [6,7,8],
-
-//     [0,3,6],
-//     [1,4,7],
-//     [2,5,8],
-
-//     [0,4,8],
-//     [2,4,6],
-// ]
-
 
 const gameBoard = (function() {
     let gameArray = []
-    // const winningSolutions = [
-    //     [0,1,2],
-    //     [3,4,5],
-    //     [6,7,8],
-    
-    //     [0,3,6],
-    //     [1,4,7],
-    //     [2,5,8],
-    
-    //     [0,4,8],
-    //     [2,4,6],
-    // ]
-
     return {
         gameArray
     }
@@ -56,19 +27,18 @@ const game = (function() {
     ]
 //winning solutions
 
-
-    let counter = 1
+    //input player names
     const playerOne = playerFactories('Player 1')
     const playerTwo = playerFactories('Player 2')
 
+    //DOM Elements
     const grid = document.querySelector('.game-grid');
     const reset = document.getElementById('reset');
-
     const btns = document.querySelectorAll('.grid-item')
-
     const turn = document.getElementById('turn')
+    //DOM Elements
 
-
+        //ONCLICK GAME GRID IS DISPLAYED. GAME STARTS
         const start = document.getElementById('start')
         start.addEventListener('click', startGame)
         function startGame () {
@@ -76,16 +46,19 @@ const game = (function() {
             start.style.display = 'none';
             console.log('Let The Games Begin')
                } 
+        //ONCLICK GAME GRID IS DISPLAYED. GAME STARTS
 
-
+        //ONCLICK PAGE RESETS
         reset.addEventListener('click', restart)
             function restart () {
                 window.location.reload()
                 console.log('Game restarted')
             }
-
-
-
+        //ONCLICK PAGE RESETS
+        
+        //COUNTER IS IN PLACE SO THAT X/O ALTERNATES AFTER CLICKS
+        let counter  = 1
+        
         btns.forEach(btn => {
             btn.addEventListener('click', handleClick)
 
@@ -103,6 +76,7 @@ const game = (function() {
                     turn.innerHTML = `${playerOne.name}, Your Move!`
                     console.log('Players Switched Again')
                 }
+                //values of click is pushed to my gamearray
                 gameBoard.gameArray.push(btn.innerHTML);
                checkWinner()
             
@@ -121,6 +95,8 @@ const game = (function() {
                 } else if(solution.every(i => btns[i].innerHTML && gameBoard.gameArray.length == 9)) {
                     turn.innerHTML = 'Its A Tie'
                     console.log('Its A tie')
+                } else {
+                    null
                 }
             }
         }
