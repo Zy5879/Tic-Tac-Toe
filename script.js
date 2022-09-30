@@ -75,20 +75,12 @@ const displayController = (function() {
       function checkWinner() {
             for(let solution of winningSolutions) {
                 if(solution.every(i => btns[i].innerHTML == 'X')) {
-                    // wins.innerHTML = `${playerOne.name} Won`;
-                    // winner[0].classList.remove('hide')
-                    // winner[1].classList.remove('hide')
                     turn.innerHTML = `Congratulations ${playerOne.name}`;
                     
                 } else if(solution.every(i => btns[i].innerHTML == 'O')) {
-                    // wins.innerHTML = `${playerTwo.name} Won`
-                    // winner[0].classList.remove('hide')
-                    // winner[2].classList.remove('hide')
                     turn.innerHTML = `Congratulations ${playerTwo.name}`;
                 } else if(solution.every(i => btns[i].innerHTML && gameBoard.gameArray.length == 9)) {
-                    // wins.innerHTML = 'TIE'
-                    // winner[3].classList.remove('hide')
-                    turn.innerHTML = 'DRAW'
+                    turn.innerHTML = 'Its A Tie'
                 }
             }
         }
