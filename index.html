@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="contain">  
     <div id="header">
         <h1>Tic-Tac-Toe</h1>
-        <!-- <button id="start">Start Game</button> -->
+        <button id="start">vs Player</button>
     </div>
+    <div class="game-grid" style="display:none;">
+    <div id="turn">Player 1, Your Move!</div>
     <div id="boardgame">
         <button class="grid-item"></button>
         <button class="grid-item"></button>
@@ -24,7 +28,10 @@
         <button class="grid-item"></button>
         <button class="grid-item"></button>
     </div>
-    <div class="wins"></div>
-    <button id="reset">Reset</button>
+    <div class="btn">
+        <button id="reset">Restart</button>
+    </div>
+    </div>
+</div>
 </body>
 </html>
